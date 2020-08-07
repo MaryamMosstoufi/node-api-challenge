@@ -1,7 +1,8 @@
-const actions = require('../../data/helpers/actionModel.js');
+const Actions = require('../../data/helpers/actionModel.js');
 const router = require('express').Router();
 
-router.get("/", (req, res) => {
+//Test API
+router.get("/test", (req, res) => {
   res.status(200).json({ ActionsAPI: "up" });
 });
 
