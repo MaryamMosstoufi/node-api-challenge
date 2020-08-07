@@ -1,7 +1,4 @@
 const express = require("express");
-
-//const Shouts = require("../shouts/shouts-model.js");
-
 const router = express.Router();
 
 router.use(express.json());

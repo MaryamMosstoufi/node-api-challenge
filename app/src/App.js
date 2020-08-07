@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 
 function App() {
+  const [projectList, setProjectList] = useState([])
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/projects')
+      .then(res => {
+        setProjectList(res.data);
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Project List
+      <ul>
+        {projectList.map(project => 
+          <li key={project.id}>
+            <div>Name: {project.name} </div>
+            <div>Description: {project.description} </div>
+          </li>
+        )}
+      </ul>
     </div>
   );
 }
