@@ -22,7 +22,7 @@ router.get('/:id', validateActionId, async(req, res) => {
 });
 
 //Insert
-router.post('/', validateActionId, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     if (!req.body.project_id) {
       res.status(400).json({message:"please provide a project ID"})
